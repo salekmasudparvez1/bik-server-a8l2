@@ -1,4 +1,4 @@
-import { Server } from "http";
+import type { Server } from "http";
 import app from "./app"
 
 const port = 3000

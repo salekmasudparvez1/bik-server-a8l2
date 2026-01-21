@@ -9,6 +9,6 @@
     "rootDir": ".",
     "outDir": "./dist"
   },
-  "include": ["."],
-  "exclude": ["./prisma","./node_modules"]
+  "include": ["./src", "./prisma","./dist"],
+  "exclude": ["./node_modules"]
 }
