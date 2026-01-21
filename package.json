@@ -7,7 +7,7 @@
   "scripts": {
     "postinstall": "prisma generate --schema prisma/schema.prisma",
     "dev": "tsx watch src/server.ts",
-    "build": "prisma generate && bun build"
+    "build": "prisma generate --schema prisma/schema.prisma && bun build src/server.ts"
   },
   "keywords": [],
   "author": "",
