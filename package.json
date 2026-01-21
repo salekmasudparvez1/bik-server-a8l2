@@ -5,8 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "postinstall": "prisma generate",
-    "dev": "tsx watch src/server.ts"
+    "postinstall": "prisma generate --schema prisma/schema.prisma",
+    "dev": "tsx watch src/server.ts",
+    "build": "prisma generate && bun build"
   },
   "keywords": [],
   "author": "",
