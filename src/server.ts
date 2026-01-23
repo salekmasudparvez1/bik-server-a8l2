@@ -1,11 +1,31 @@
-import type { Server } from "http";
-import app from "./app"
+import { Server } from 'http';
+import app from './app'
+import config from './app/config';
 
-const port = 3000
 
-const main = async ()=>{
-  const server:Server = app.listen(port,()=>{
-    console.log('App is running on port',port);
-  })
-}
-main()
+
+async function main() {
+    const server: Server = app.listen(config.port, () => {
+        console.log("Sever is running on port ", config.port);
+    });
+
+    const exitHandler = () => {
+        if (server) {
+            server.close(() => {
+                console.info("Server closed!")
+            })
+        }
+        process.exit(1);
+    };
+    process.on('uncaughtException', (error) => {
+        console.log(error);
+        exitHandler();
+    });
+
+    process.on('unhandledRejection', (error) => {
+        console.log(error);
+        exitHandler();
+    })
+};
+
+main();
