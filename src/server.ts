@@ -1,31 +1,16 @@
 import { Server } from 'http';
-import app from './app'
+import app from './app';
 import config from './app/config';
 
-
-
 async function main() {
+  // Only run the server locally, Vercel will handle it in production
+  if (process.env.NODE_ENV !== 'production') {
     const server: Server = app.listen(config.port, () => {
-        console.log("Sever is running on port ", config.port);
+      console.log('Server is running on port', config.port);
     });
-
-    const exitHandler = () => {
-        if (server) {
-            server.close(() => {
-                console.info("Server closed!")
-            })
-        }
-        process.exit(1);
-    };
-    process.on('uncaughtException', (error) => {
-        console.log(error);
-        exitHandler();
-    });
-
-    process.on('unhandledRejection', (error) => {
-        console.log(error);
-        exitHandler();
-    })
-};
+  }
+}
 
 main();
+
+export default app;
