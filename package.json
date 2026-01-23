@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "postinstall": "prisma generate --schema prisma/schema.prisma",
+    "postinstall": "prisma generate && tsc",
     "dev": "tsx watch src/server.ts",
     "build": "prisma generate --schema prisma/schema.prisma && bun tsc"
   },
