@@ -156,7 +156,7 @@ export type ServiceRecordGroupByArgs<ExtArgs extends runtime.Types.Extensions.In
 export type ServiceRecordGroupByOutputType = {
   serviceId: string
   serviceDate: Date
-  completionDate: Date
+  completionDate: Date | null
   description: string
   status: $Enums.ServiceStatus
   bikeId: string
@@ -186,7 +186,7 @@ export type ServiceRecordWhereInput = {
   NOT?: Prisma.ServiceRecordWhereInput | Prisma.ServiceRecordWhereInput[]
   serviceId?: Prisma.StringFilter<"ServiceRecord"> | string
   serviceDate?: Prisma.DateTimeFilter<"ServiceRecord"> | Date | string
-  completionDate?: Prisma.DateTimeFilter<"ServiceRecord"> | Date | string
+  completionDate?: Prisma.DateTimeNullableFilter<"ServiceRecord"> | Date | string | null
   description?: Prisma.StringFilter<"ServiceRecord"> | string
   status?: Prisma.EnumServiceStatusFilter<"ServiceRecord"> | $Enums.ServiceStatus
   bikeId?: Prisma.StringFilter<"ServiceRecord"> | string
@@ -196,7 +196,7 @@ export type ServiceRecordWhereInput = {
 export type ServiceRecordOrderByWithRelationInput = {
   serviceId?: Prisma.SortOrder
   serviceDate?: Prisma.SortOrder
-  completionDate?: Prisma.SortOrder
+  completionDate?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrder
   status?: Prisma.SortOrder
   bikeId?: Prisma.SortOrder
@@ -209,7 +209,7 @@ export type ServiceRecordWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.ServiceRecordWhereInput[]
   NOT?: Prisma.ServiceRecordWhereInput | Prisma.ServiceRecordWhereInput[]
   serviceDate?: Prisma.DateTimeFilter<"ServiceRecord"> | Date | string
-  completionDate?: Prisma.DateTimeFilter<"ServiceRecord"> | Date | string
+  completionDate?: Prisma.DateTimeNullableFilter<"ServiceRecord"> | Date | string | null
   description?: Prisma.StringFilter<"ServiceRecord"> | string
   status?: Prisma.EnumServiceStatusFilter<"ServiceRecord"> | $Enums.ServiceStatus
   bikeId?: Prisma.StringFilter<"ServiceRecord"> | string
@@ -219,7 +219,7 @@ export type ServiceRecordWhereUniqueInput = Prisma.AtLeast<{
 export type ServiceRecordOrderByWithAggregationInput = {
   serviceId?: Prisma.SortOrder
   serviceDate?: Prisma.SortOrder
-  completionDate?: Prisma.SortOrder
+  completionDate?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrder
   status?: Prisma.SortOrder
   bikeId?: Prisma.SortOrder
@@ -234,7 +234,7 @@ export type ServiceRecordScalarWhereWithAggregatesInput = {
   NOT?: Prisma.ServiceRecordScalarWhereWithAggregatesInput | Prisma.ServiceRecordScalarWhereWithAggregatesInput[]
   serviceId?: Prisma.StringWithAggregatesFilter<"ServiceRecord"> | string
   serviceDate?: Prisma.DateTimeWithAggregatesFilter<"ServiceRecord"> | Date | string
-  completionDate?: Prisma.DateTimeWithAggregatesFilter<"ServiceRecord"> | Date | string
+  completionDate?: Prisma.DateTimeNullableWithAggregatesFilter<"ServiceRecord"> | Date | string | null
   description?: Prisma.StringWithAggregatesFilter<"ServiceRecord"> | string
   status?: Prisma.EnumServiceStatusWithAggregatesFilter<"ServiceRecord"> | $Enums.ServiceStatus
   bikeId?: Prisma.StringWithAggregatesFilter<"ServiceRecord"> | string
@@ -243,7 +243,7 @@ export type ServiceRecordScalarWhereWithAggregatesInput = {
 export type ServiceRecordCreateInput = {
   serviceId?: string
   serviceDate: Date | string
-  completionDate: Date | string
+  completionDate?: Date | string | null
   description: string
   status?: $Enums.ServiceStatus
   bike: Prisma.BikeCreateNestedOneWithoutServiceInput
@@ -252,7 +252,7 @@ export type ServiceRecordCreateInput = {
 export type ServiceRecordUncheckedCreateInput = {
   serviceId?: string
   serviceDate: Date | string
-  completionDate: Date | string
+  completionDate?: Date | string | null
   description: string
   status?: $Enums.ServiceStatus
   bikeId: string
@@ -261,7 +261,7 @@ export type ServiceRecordUncheckedCreateInput = {
 export type ServiceRecordUpdateInput = {
   serviceId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  completionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumServiceStatusFieldUpdateOperationsInput | $Enums.ServiceStatus
   bike?: Prisma.BikeUpdateOneRequiredWithoutServiceNestedInput
@@ -270,7 +270,7 @@ export type ServiceRecordUpdateInput = {
 export type ServiceRecordUncheckedUpdateInput = {
   serviceId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  completionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumServiceStatusFieldUpdateOperationsInput | $Enums.ServiceStatus
   bikeId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -279,7 +279,7 @@ export type ServiceRecordUncheckedUpdateInput = {
 export type ServiceRecordCreateManyInput = {
   serviceId?: string
   serviceDate: Date | string
-  completionDate: Date | string
+  completionDate?: Date | string | null
   description: string
   status?: $Enums.ServiceStatus
   bikeId: string
@@ -288,7 +288,7 @@ export type ServiceRecordCreateManyInput = {
 export type ServiceRecordUpdateManyMutationInput = {
   serviceId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  completionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumServiceStatusFieldUpdateOperationsInput | $Enums.ServiceStatus
 }
@@ -296,7 +296,7 @@ export type ServiceRecordUpdateManyMutationInput = {
 export type ServiceRecordUncheckedUpdateManyInput = {
   serviceId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  completionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumServiceStatusFieldUpdateOperationsInput | $Enums.ServiceStatus
   bikeId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -381,6 +381,10 @@ export type ServiceRecordUncheckedUpdateManyWithoutBikeNestedInput = {
   deleteMany?: Prisma.ServiceRecordScalarWhereInput | Prisma.ServiceRecordScalarWhereInput[]
 }
 
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
+}
+
 export type EnumServiceStatusFieldUpdateOperationsInput = {
   set?: $Enums.ServiceStatus
 }
@@ -388,7 +392,7 @@ export type EnumServiceStatusFieldUpdateOperationsInput = {
 export type ServiceRecordCreateWithoutBikeInput = {
   serviceId?: string
   serviceDate: Date | string
-  completionDate: Date | string
+  completionDate?: Date | string | null
   description: string
   status?: $Enums.ServiceStatus
 }
@@ -396,7 +400,7 @@ export type ServiceRecordCreateWithoutBikeInput = {
 export type ServiceRecordUncheckedCreateWithoutBikeInput = {
   serviceId?: string
   serviceDate: Date | string
-  completionDate: Date | string
+  completionDate?: Date | string | null
   description: string
   status?: $Enums.ServiceStatus
 }
@@ -433,7 +437,7 @@ export type ServiceRecordScalarWhereInput = {
   NOT?: Prisma.ServiceRecordScalarWhereInput | Prisma.ServiceRecordScalarWhereInput[]
   serviceId?: Prisma.StringFilter<"ServiceRecord"> | string
   serviceDate?: Prisma.DateTimeFilter<"ServiceRecord"> | Date | string
-  completionDate?: Prisma.DateTimeFilter<"ServiceRecord"> | Date | string
+  completionDate?: Prisma.DateTimeNullableFilter<"ServiceRecord"> | Date | string | null
   description?: Prisma.StringFilter<"ServiceRecord"> | string
   status?: Prisma.EnumServiceStatusFilter<"ServiceRecord"> | $Enums.ServiceStatus
   bikeId?: Prisma.StringFilter<"ServiceRecord"> | string
@@ -442,7 +446,7 @@ export type ServiceRecordScalarWhereInput = {
 export type ServiceRecordCreateManyBikeInput = {
   serviceId?: string
   serviceDate: Date | string
-  completionDate: Date | string
+  completionDate?: Date | string | null
   description: string
   status?: $Enums.ServiceStatus
 }
@@ -450,7 +454,7 @@ export type ServiceRecordCreateManyBikeInput = {
 export type ServiceRecordUpdateWithoutBikeInput = {
   serviceId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  completionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumServiceStatusFieldUpdateOperationsInput | $Enums.ServiceStatus
 }
@@ -458,7 +462,7 @@ export type ServiceRecordUpdateWithoutBikeInput = {
 export type ServiceRecordUncheckedUpdateWithoutBikeInput = {
   serviceId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  completionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumServiceStatusFieldUpdateOperationsInput | $Enums.ServiceStatus
 }
@@ -466,7 +470,7 @@ export type ServiceRecordUncheckedUpdateWithoutBikeInput = {
 export type ServiceRecordUncheckedUpdateManyWithoutBikeInput = {
   serviceId?: Prisma.StringFieldUpdateOperationsInput | string
   serviceDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  completionDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completionDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumServiceStatusFieldUpdateOperationsInput | $Enums.ServiceStatus
 }
@@ -531,7 +535,7 @@ export type $ServiceRecordPayload<ExtArgs extends runtime.Types.Extensions.Inter
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     serviceId: string
     serviceDate: Date
-    completionDate: Date
+    completionDate: Date | null
     description: string
     status: $Enums.ServiceStatus
     bikeId: string

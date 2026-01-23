@@ -42,7 +42,7 @@ enum ServiceStatus {
 model ServiceRecord {
   serviceId      String        @id @default(uuid())
   serviceDate    DateTime
-  completionDate DateTime
+  completionDate DateTime?
   description    String
   status         ServiceStatus @default(PENDING)
 

@@ -28,7 +28,7 @@ CREATE TABLE "bikes" (
 CREATE TABLE "services" (
     "serviceId" TEXT NOT NULL,
     "serviceDate" TIMESTAMP(3) NOT NULL,
-    "completionDate" TIMESTAMP(3) NOT NULL,
+    "completionDate" TIMESTAMP(3),
     "description" TEXT NOT NULL,
     "status" "ServiceStatus" NOT NULL DEFAULT 'PENDING',
     "bikeId" TEXT NOT NULL,
