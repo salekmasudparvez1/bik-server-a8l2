@@ -1,9 +1,9 @@
-import catchAsync from "../../../shared/catchAsync";
+import catchAsync from "../../../shared/catchAsync.js";
 import { Request, Response } from "express";
-import { customerService } from "./customer.service";
-import sendResponse from "../../../shared/sendResponse";
+import { customerService } from "./customer.service.js";
+import sendResponse from "../../../shared/sendResponse.js";
 import { StatusCodes } from "http-status-codes";
-import { TCreateCustomerBody } from "./customer.interface";
+import { TCreateCustomerBody } from "./customer.interface.js";
 
 
 const createCustomer = catchAsync(async (req: Request, res: Response) => {
