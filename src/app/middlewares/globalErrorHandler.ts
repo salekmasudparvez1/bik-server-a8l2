@@ -17,7 +17,7 @@ const globalErrorHandler = (err: any, req: Request, res: Response, next: NextFun
     },
   ];
     let error = err;
-    console.log('error____:', err.issues);
+ 
     if (err instanceof Prisma.PrismaClientValidationError) {
         message = 'Validation Error';
         error = err.message
@@ -41,17 +41,4 @@ const globalErrorHandler = (err: any, req: Request, res: Response, next: NextFun
     })
 
 };
-ZodError: [
-  {
-    "origin": "string",
-    "code": "too_small",
-    "minimum": 1,
-    "inclusive": true,
-    "path": [
-      "body",
-      "name"
-    ],
-    "message": "Name is required"
-  }
-]
 export default globalErrorHandler;
