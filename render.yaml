@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: prisma-api
+    runtime: node
+    repo: https://github.com/salekmasudparvez1/bik-server-a8l2.git
+    branch: main
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
