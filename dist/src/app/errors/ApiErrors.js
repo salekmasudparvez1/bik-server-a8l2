@@ -1,5 +1,4 @@
-"use strict";
-class AppError extends Error {
+export class AppError extends Error {
     statusCode;
     constructor(statusCode, message, stack = '') {
         super(message);

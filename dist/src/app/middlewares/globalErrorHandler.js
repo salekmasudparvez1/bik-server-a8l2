@@ -1,10 +1,19 @@
 import { StatusCodes } from "http-status-codes";
 import { Prisma } from "../../../prisma/generated/client/client";
+import { ZodError } from "zod";
+import HandleZodErrror from "../errors/handleZodError";
 const globalErrorHandler = (err, req, res, next) => {
     let statusCode = StatusCodes.INTERNAL_SERVER_ERROR;
     let success = false;
     let message = err.message || "Something went wrong!";
+    let errorSources = [
+        {
+            path: '',
+            message: 'Something went wrong',
+        },
+    ];
     let error = err;
+    console.log('error____:', err.issues);
     if (err instanceof Prisma.PrismaClientValidationError) {
         message = 'Validation Error';
         error = err.message;
@@ -15,10 +24,29 @@ const globalErrorHandler = (err, req, res, next) => {
             error = err.meta;
         }
     }
+    else if (err instanceof ZodError) {
+        const simplifiedError = HandleZodErrror(err);
+        statusCode = simplifiedError?.statusCode;
+        message = simplifiedError?.message;
+        errorSources = simplifiedError?.errorSources;
+    }
     res.status(statusCode).json({
         success,
         message,
         error
     });
 };
+ZodError: [
+    {
+        "origin": "string",
+        "code": "too_small",
+        "minimum": 1,
+        "inclusive": true,
+        "path": [
+            "body",
+            "name"
+        ],
+        "message": "Name is required"
+    }
+];
 export default globalErrorHandler;
