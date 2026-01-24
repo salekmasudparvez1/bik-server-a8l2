@@ -1,8 +1,8 @@
 import { Server } from 'http';
 
 
-import config from './app/config/index.js'; 
-import app from './app.js';
+import config from './app/config'; 
+import app from './app';
 
 async function main() {
   if (process.env.NODE_ENV !== 'production') {
