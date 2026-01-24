@@ -36,12 +36,12 @@ export const Sql = runtime.Sql;
 export const Decimal = runtime.Decimal;
 export const getExtensionContext = runtime.Extensions.getExtensionContext;
 /**
- * Prisma Client JS version: 7.2.0
- * Query Engine version: 0c8ef2ce45c83248ab3df073180d5eda9e8be7a3
+ * Prisma Client JS version: 7.3.0
+ * Query Engine version: 9d6ad21cbbceab97458517b147a6a09ff43aa735
  */
 export const prismaVersion = {
-    client: "7.2.0",
-    engine: "0c8ef2ce45c83248ab3df073180d5eda9e8be7a3"
+    client: "7.3.0",
+    engine: "9d6ad21cbbceab97458517b147a6a09ff43aa735"
 };
 export const NullTypes = {
     DbNull: runtime.NullTypes.DbNull,
@@ -66,7 +66,11 @@ export const JsonNull = runtime.JsonNull;
  * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
  */
 export const AnyNull = runtime.AnyNull;
-export const ModelName = {};
+export const ModelName = {
+    Customer: 'Customer',
+    Bike: 'Bike',
+    ServiceRecord: 'ServiceRecord'
+};
 /**
  * Enums
  */
@@ -76,4 +80,39 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
     RepeatableRead: 'RepeatableRead',
     Serializable: 'Serializable'
 });
+export const CustomerScalarFieldEnum = {
+    customerId: 'customerId',
+    name: 'name',
+    email: 'email',
+    phone: 'phone',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+export const BikeScalarFieldEnum = {
+    bikeId: 'bikeId',
+    brand: 'brand',
+    model: 'model',
+    year: 'year',
+    customerId: 'customerId'
+};
+export const ServiceRecordScalarFieldEnum = {
+    serviceId: 'serviceId',
+    serviceDate: 'serviceDate',
+    completionDate: 'completionDate',
+    description: 'description',
+    status: 'status',
+    bikeId: 'bikeId'
+};
+export const SortOrder = {
+    asc: 'asc',
+    desc: 'desc'
+};
+export const QueryMode = {
+    default: 'default',
+    insensitive: 'insensitive'
+};
+export const NullsOrder = {
+    first: 'first',
+    last: 'last'
+};
 export const defineExtension = runtime.Extensions.defineExtension;

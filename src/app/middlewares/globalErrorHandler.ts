@@ -1,13 +1,23 @@
 import { NextFunction, Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import { Prisma } from "../../../prisma/generated/client/client";
+import { ZodError } from "zod";
+import HandleZodErrror from "../errors/handleZodError";
+import { TErrorSources } from "../type/Error";
 
 
 const globalErrorHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
     let statusCode = StatusCodes.INTERNAL_SERVER_ERROR;
     let success = false;
     let message = err.message || "Something went wrong!";
+     let errorSources: TErrorSources = [
+    {
+      path: '',
+      message: 'Something went wrong',
+    },
+  ];
     let error = err;
+    console.log('error____:', err.issues);
     if (err instanceof Prisma.PrismaClientValidationError) {
         message = 'Validation Error';
         error = err.message
@@ -17,6 +27,11 @@ const globalErrorHandler = (err: any, req: Request, res: Response, next: NextFun
             message = "Duplicate Key error";
             error = err.meta;
         }
+    } else if (err instanceof ZodError) {
+        const simplifiedError = HandleZodErrror(err);
+        statusCode = simplifiedError?.statusCode;
+        message = simplifiedError?.message;
+        errorSources = simplifiedError?.errorSources;
     }
 
     res.status(statusCode).json({
@@ -26,5 +41,17 @@ const globalErrorHandler = (err: any, req: Request, res: Response, next: NextFun
     })
 
 };
-
+ZodError: [
+  {
+    "origin": "string",
+    "code": "too_small",
+    "minimum": 1,
+    "inclusive": true,
+    "path": [
+      "body",
+      "name"
+    ],
+    "message": "Name is required"
+  }
+]
 export default globalErrorHandler;

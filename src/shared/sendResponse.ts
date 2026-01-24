@@ -1,16 +1,11 @@
 import { Response } from "express"
 
 
-type TMetaData = {
-    page: number;
-    limit: number;
-    skip: number;
-};
+
 type TResponseData<T> = {
     statusCode: number;
     success: boolean;
     message?: string;
-    meta?: TMetaData
     data: T | null | undefined
 
 }
@@ -20,7 +15,6 @@ const sendResponse = <T>(res: Response, jsonData: TResponseData<T>) => {
         {
             success: jsonData.success || "Request completed successfully",
             message: jsonData.message,
-            meta: jsonData?.meta || null,
             data: jsonData?.data ?? null
         }
     )

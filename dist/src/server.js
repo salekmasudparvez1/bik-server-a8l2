@@ -1,8 +1,12 @@
-import app from "./app";
-const port = 3000;
-const main = async () => {
-    const server = app.listen(port, () => {
-        console.log('App is running on port', port);
-    });
-};
+import app from './app';
+import config from './app/config';
+async function main() {
+    // Only run the server locally, Vercel will handle it in production
+    if (process.env.NODE_ENV !== 'production') {
+        const server = app.listen(config.port, () => {
+            console.log('Server is running on port', config.port);
+        });
+    }
+}
 main();
+export default app;

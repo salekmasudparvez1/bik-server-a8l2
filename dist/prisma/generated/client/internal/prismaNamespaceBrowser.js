@@ -38,13 +38,52 @@ export const JsonNull = runtime.JsonNull;
  * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
  */
 export const AnyNull = runtime.AnyNull;
-export const ModelName = {};
+export const ModelName = {
+    Customer: 'Customer',
+    Bike: 'Bike',
+    ServiceRecord: 'ServiceRecord'
+};
 /*
  * Enums
  */
-export const TransactionIsolationLevel = {
+export const TransactionIsolationLevel = runtime.makeStrictEnum({
     ReadUncommitted: 'ReadUncommitted',
     ReadCommitted: 'ReadCommitted',
     RepeatableRead: 'RepeatableRead',
     Serializable: 'Serializable'
+});
+export const CustomerScalarFieldEnum = {
+    customerId: 'customerId',
+    name: 'name',
+    email: 'email',
+    phone: 'phone',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+export const BikeScalarFieldEnum = {
+    bikeId: 'bikeId',
+    brand: 'brand',
+    model: 'model',
+    year: 'year',
+    customerId: 'customerId'
+};
+export const ServiceRecordScalarFieldEnum = {
+    serviceId: 'serviceId',
+    serviceDate: 'serviceDate',
+    completionDate: 'completionDate',
+    description: 'description',
+    status: 'status',
+    bikeId: 'bikeId'
+};
+export const SortOrder = {
+    asc: 'asc',
+    desc: 'desc'
+};
+export const QueryMode = {
+    default: 'default',
+    insensitive: 'insensitive'
+};
+export const NullsOrder = {
+    first: 'first',
+    last: 'last'
 };
