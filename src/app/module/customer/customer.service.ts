@@ -1,7 +1,7 @@
 import { StatusCodes } from "http-status-codes"
-import { TCreateCustomerBody } from "./customer.interface"
-import { prisma } from "../../../shared/prisma"
-import { AppError } from "../../errors/ApiErrors"
+import { TCreateCustomerBody } from "./customer.interface.js";
+import { AppError } from "../../errors/ApiErrors.js";
+import { prisma } from "../../../shared/prisma.js";
 
 
 const createCustomerFunc = async (data: TCreateCustomerBody) => {

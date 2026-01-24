@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
-import { AppError } from "../../errors/ApiErrors";
-import { prisma } from "../../../shared/prisma";
+import { AppError } from "../../errors/ApiErrors.js";
+import { prisma } from "../../../shared/prisma.js";
 
 const createBikeServiceFunc = async (data: { bikeId: string, serviceDate: string, description: string, status: "PENDING" | "IN_PROGRESS" | "DONE" }) => {
     if (!data?.bikeId) throw new AppError(StatusCodes.NOT_FOUND, "Bike Id not found");

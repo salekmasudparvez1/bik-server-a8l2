@@ -1,7 +1,7 @@
 import express from 'express';
-import { BikeController } from './bike.controller';
-import ValidateRequest from '../../middlewares/ValidateRequest';
-import { createBikeSchema, fetchBikeByIdSchema } from './bike.validation';
+import ValidateRequest from '../../middlewares/ValidateRequest.js';
+import { createBikeSchema, fetchBikeByIdSchema } from './bike.validation.js';
+import { BikeController } from './bike.controller.js';
 
 const router = express.Router();
 

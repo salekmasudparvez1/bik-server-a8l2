@@ -1,9 +1,8 @@
 
 import express from 'express'
-import { customerController } from './customer.controller';
-import ValidateRequest from '../../middlewares/ValidateRequest';
-import { CreateCustomerSchema, deleteCustomerByIdSchema, fetchCustomerByIdSchema, updateCustomerByIdSchema } from './customer.validation';
-
+import ValidateRequest from '../../middlewares/ValidateRequest.js';
+import { CreateCustomerSchema, deleteCustomerByIdSchema, fetchCustomerByIdSchema, updateCustomerByIdSchema } from './customer.validation.js';
+import { customerController } from './customer.controller.js';
 const router = express.Router();
 
 router.post('/',ValidateRequest(CreateCustomerSchema) ,customerController.createCustomer)

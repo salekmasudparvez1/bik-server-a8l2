@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import catchAsync from "../../shared/catchAsync";
+import catchAsync from "../../shared/catchAsync.js";
 import { ZodObject } from "zod";
 
 

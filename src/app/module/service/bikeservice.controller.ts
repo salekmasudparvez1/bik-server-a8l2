@@ -1,10 +1,11 @@
 import { StatusCodes } from "http-status-codes";
-import catchAsync from "../../../shared/catchAsync";
-import sendResponse from "../../../shared/sendResponse";
-import { BikeService } from "./bikeservice.service";
+import catchAsync from "../../../shared/catchAsync.js";
+import { Request, Response } from "express";
+import { BikeService } from "./bikeservice.service.js";
+import sendResponse from "../../../shared/sendResponse.js";
 
 
-const createBikeService = catchAsync(async(req,res)=>{
+const createBikeService = catchAsync(async(req:Request,res:Response)=>{
     const data = req.body;
     const result = await BikeService.createBikeServiceFunc(data);
     sendResponse(res,{
@@ -15,7 +16,7 @@ const createBikeService = catchAsync(async(req,res)=>{
     })
 });
 
-const getAllBikeServices = catchAsync(async(req,res)=>{
+const getAllBikeServices = catchAsync(async(req:Request,res:Response)=>{
     const result = await BikeService.getAllBikeServicesFunc();
     sendResponse(res,{
         statusCode:StatusCodes.OK,
@@ -24,7 +25,7 @@ const getAllBikeServices = catchAsync(async(req,res)=>{
         data:result?.data
     })
 });
-const getBikeServiceById = catchAsync(async(req,res)=>{
+const getBikeServiceById = catchAsync(async(req:Request,res:Response)=>{
     const id = req.params.id as string;
     const result = await BikeService.getBikeServiceByIdFunc(id);
     sendResponse(res,{
@@ -34,7 +35,7 @@ const getBikeServiceById = catchAsync(async(req,res)=>{
         data:result?.data
     })
 });
-const getAllBikeServiceOverdue = catchAsync(async(req,res)=>{
+const getAllBikeServiceOverdue = catchAsync(async(req:Request,res:Response)=>{
     const result = await BikeService.getAllBikeServiceOverdueFunc();
     sendResponse(res,{
         statusCode:StatusCodes.OK,
@@ -43,7 +44,7 @@ const getAllBikeServiceOverdue = catchAsync(async(req,res)=>{
         data:result?.data
     })
 })
-const addCompletionDate = catchAsync(async(req,res)=>{
+const addCompletionDate = catchAsync(async(req:Request,res:Response)=>{
     const id = req.params.id as string;
     const { completionDate } = req.body;
     const result = await BikeService.addComplitionDateFunc(id, completionDate);

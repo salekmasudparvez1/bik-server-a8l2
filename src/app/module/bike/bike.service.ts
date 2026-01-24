@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
-import { prisma } from "../../../shared/prisma"
-import { AppError } from "../../errors/ApiErrors";
+import { AppError } from "../../errors/ApiErrors.js";
+import { prisma } from "../../../shared/prisma.js";
 
 const createBikeFunc = async (data: { brand: string, model: string, year: number, customerId: string }) => {
     if (!data?.customerId) throw new AppError(StatusCodes.NOT_FOUND, "Id not found");

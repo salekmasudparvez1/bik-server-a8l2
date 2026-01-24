@@ -1,8 +1,7 @@
 import express from 'express';
-import { BikeServiceController } from './bikeservice.controller';
-import ValidateRequest from '../../middlewares/ValidateRequest';
-import { addCompletionDateSchema, createBikeServiceSchema } from './bikeservice.validation';
-
+import ValidateRequest from '../../middlewares/ValidateRequest.js';
+import { addCompletionDateSchema, createBikeServiceSchema } from './bikeservice.validation.js';
+import { BikeServiceController } from './bikeservice.controller.js';
 const router = express.Router();
 
 router.post('/', ValidateRequest(createBikeServiceSchema), BikeServiceController.createBikeService)
