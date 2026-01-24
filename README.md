@@ -77,7 +77,7 @@ The system uses Prisma ORM with UUIDs for all primary keys.
 | serviceDate    | DateTime | Date the service started                 |
 | completionDate | DateTime | Nullable. Date the service completed     |
 | description    | String   | Details of service (e.g., oil change)    |
-| status         | String   | Status: "pending", "in-progress", "done" |
+| status         | String   | Status: "PENDING", "IN_PROGRESS", "DONE" |
 
 ## 📦 API Endpoints
 
@@ -286,7 +286,7 @@ POST /api/services
   "bikeId": "f3f1b192-3e62-402e-9bd3-d351a5a10e92",
   "serviceDate": "2025-04-11T10:00:00.000Z",
   "description": "Oil change",
-  "status": "pending"
+  "status": "PENDING"
 }
 ```
 
@@ -301,7 +301,7 @@ POST /api/services
     "serviceDate": "2025-04-11T10:00:00.000Z",
     "completionDate": null,
     "description": "Oil change",
-    "status": "pending"
+    "status": "PENDING"
   }
 }
 ```
@@ -323,7 +323,7 @@ GET /api/services
       "serviceDate": "2025-04-11T10:00:00.000Z",
       "completionDate": null,
       "description": "Oil change",
-      "status": "pending"
+      "status": "PENDING"
     }
   ]
 }
@@ -345,7 +345,7 @@ GET /api/services/:serviceId
     "serviceDate": "2025-04-11T10:00:00.000Z",
     "completionDate": null,
     "description": "Oil change",
-    "status": "pending"
+    "status": "PENDING"
   }
 }
 ```
@@ -397,20 +397,20 @@ Standardized error response structure across all endpoints:
 
 ### ⏳ Pending or Overdue Services
 
-#### ✅ Get pending or overdue services
+#### ✅ Get PENDING or overdue services
 ```http
 GET /api/services/status
 ```
 
 Returns all services that:
-- Have status = "pending" or "in-progress"
+- Have status = "PENDING" or "IN_PROGRESS"
 - serviceDate is older than 7 days
 
 **Response (200 OK):**
 ```json
 {
   "success": true,
-  "message": "Overdue or pending services fetched successfully",
+  "message": "Overdue or PENDING services fetched successfully",
   "data": [
     {
       "serviceId": "a1e4a182-c80d-4ff7-9a3d-873929f9d0e6",
@@ -418,7 +418,7 @@ Returns all services that:
       "serviceDate": "2025-04-01T10:00:00.000Z",
       "completionDate": null,
       "description": "Oil change",
-      "status": "pending"
+      "status": "PENDING"
     },
     {
       "serviceId": "c9bce2ff-44a2-4b3f-bef7-04f5e35d21d2",
@@ -582,7 +582,7 @@ This project is licensed under the MIT License.
 
 **Salek Masud Parvez**
 
-- GitHub: [@salekmasudparvez](https://github.com/salekmasudparvez)
+- GitHub: [@salekmasudparvez](https://github.com/salekmasudparvez1)
 - Live API: [https://bik-server-a8l2.vercel.app](https://bik-server-a8l2.vercel.app)
 
 ---

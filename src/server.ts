@@ -1,6 +1,8 @@
 import { Server } from 'http';
+
+
+import config from './app/config'; 
 import app from './app';
-import config from './app/config';
 
 async function main() {
   // Only run the server locally, Vercel will handle it in production
